@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://6ae16dc3gckp"]
+
+[ext_resource type="PackedScene" uid="uid://m6tsts5y3d5j" path="res://scenes/player.tscn" id="1_2ii48"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_eoo3d"]
+[ext_resource type="PackedScene" uid="uid://r1ted5ltu5m1" path="res://scenes/box.tscn" id="2_efi52"]
+[ext_resource type="PackedScene" uid="uid://bw8klfkwmtc5v" path="res://scenes/bomb.tscn" id="3_rt83s"]
+[ext_resource type="PackedScene" uid="uid://dcmwr2jbk6oa0" path="res://scenes/explosions/epicenter.tscn" id="4_torce"]
+
+[node name="Main" type="Area2D"]
+script = ExtResource("1_eoo3d")
+box_scene = ExtResource("2_efi52")
+bomb_scene = ExtResource("3_rt83s")
+epicenter_scene = ExtResource("4_torce")
+
+[node name="Player" parent="." instance=ExtResource("1_2ii48")]
+position = Vector2(500, 600)
+
+[connection signal="bomb_placed" from="Player" to="." method="_on_player_bomb_placed"]

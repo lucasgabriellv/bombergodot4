@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://kht104unor4f"]
+
+[ext_resource type="Texture2D" uid="uid://dlpw1mw1t3vkc" path="res://sprites/Portal.png" id="1_pkr2u"]
+[ext_resource type="Script" path="res://scripts/portal.gd" id="1_qwynd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sj1mh"]
+radius = 8.0
+
+[node name="winportal" type="Area2D"]
+collision_mask = 8
+script = ExtResource("1_qwynd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pkr2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sj1mh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

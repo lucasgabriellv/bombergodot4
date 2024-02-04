@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c46nu5i3bjo45"]
+
+[ext_resource type="Script" path="res://scripts/explosion/explosion-epicenter.gd" id="1_v3g5o"]
+[ext_resource type="PackedScene" uid="uid://df6ysvnwvax88" path="res://scenes/explosion/beam.tscn" id="2_yrfvt"]
+[ext_resource type="PackedScene" uid="uid://mq27tixmrjda" path="res://scenes/explosion/end.tscn" id="3_tgnpi"]
+[ext_resource type="Texture2D" uid="uid://cexfqq0tpuctg" path="res://sprites/bomb/fire-epicenter.png" id="4_7e4qm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eusj"]
+size = Vector2(15, 15)
+
+[node name="epicenter" type="Area2D" groups=["explosion"]]
+texture_filter = 1
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 19
+script = ExtResource("1_v3g5o")
+beam_scene = ExtResource("2_yrfvt")
+end_scene = ExtResource("3_tgnpi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_7e4qm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.9407e-08, -1.49012e-07)
+shape = SubResource("RectangleShape2D_4eusj")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

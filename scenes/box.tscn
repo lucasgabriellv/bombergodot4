@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://r1ted5ltu5m1"]
+
+[ext_resource type="Script" path="res://scripts/box.gd" id="1_8b5cb"]
+[ext_resource type="Texture2D" uid="uid://b6l2pkdu2rukh" path="res://sprites/box/burning-box.png" id="3_jbcry"]
+[ext_resource type="Texture2D" uid="uid://cq3whyfpacltc" path="res://sprites/box/box.png" id="4_jht5v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnnyg"]
+atlas = ExtResource("3_jbcry")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpjwo"]
+atlas = ExtResource("3_jbcry")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ywpr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnnyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpjwo")
+}],
+"loop": true,
+"name": &"burning",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jht5v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5ewp"]
+size = Vector2(15, 15)
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["destructibles"]]
+collision_layer = 2
+collision_mask = 20
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_8b5cb")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_0ywpr")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_m5ewp")
+
+[node name="BurnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="BurnTimer" to="." method="_on_burn_timer_timeout"]

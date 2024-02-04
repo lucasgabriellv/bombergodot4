@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://df6ysvnwvax88"]
+
+[ext_resource type="Script" path="res://scripts/explosion/explosion-beam.gd" id="1_2ogwp"]
+[ext_resource type="Texture2D" uid="uid://phquy4tjqss0" path="res://sprites/bomb/fire-beam.png" id="2_i43aw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64td5"]
+size = Vector2(14, 14)
+
+[node name="beam" type="Area2D" groups=["explosion"]]
+texture_filter = 1
+collision_layer = 4
+collision_mask = 19
+script = ExtResource("1_2ogwp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i43aw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.9407e-08, -1.19209e-07)
+shape = SubResource("RectangleShape2D_64td5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
