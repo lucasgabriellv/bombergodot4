@@ -15,10 +15,10 @@ BomberGodot4 é um jogo top-down onde os jogadores controlam personagens que dev
 - Barra de espaço para plantar uma bomba.
 
 ## Instalação e Execução
-Certifique-se de ter o Godot Engine instalado em seu computador.
-Clone ou baixe este repositório para o seu computador.
-Abra o Godot Engine e selecione "Abrir Projeto".
-Navegue até o diretório onde você clonou ou baixou este repositório e selecione o arquivo project.tscn
+- Certifique-se de ter o Godot Engine instalado em seu computador.
+- Clone ou baixe este repositório para o seu computador.
+- Abra o Godot Engine e selecione "Abrir Projeto".
+- Navegue até o diretório onde você clonou ou baixou este repositório e selecione o arquivo project.tscn
 
 ## Créditos
 Desenvolvido por Lucas Veloso para a disciplina de Sistemas Inteligentes.
